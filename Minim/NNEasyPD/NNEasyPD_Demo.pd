@@ -1,0 +1,130 @@
+#N canvas 240 54 1071 776 10;
+#X obj 235 665 dac~;
+#X obj 555 595 vline~;
+#X obj 127 156 metro 10;
+#X obj 127 61 r start;
+#X obj 127 130 tgl 15 0 empty empty empty 17 7 0 10 -262144 -1 -1 0
+1;
+#X obj 178 431 cos~;
+#X obj 178 408 *~;
+#X obj 221 431 cos~;
+#X obj 277 365 wrap~;
+#X obj 241 365 -~;
+#X obj 221 408 +~;
+#X obj 214 461 -~;
+#X obj 234 493 *~;
+#X obj 196 493 +~;
+#X obj 240 338 samphold~;
+#X obj 299 239 / 10;
+#X obj 299 287 line~;
+#X obj 299 264 pack 0 50;
+#X obj 179 284 phasor~;
+#X obj 364 402 *~;
+#N canvas 0 22 450 300 (subpatch) 0;
+#X array bell-curve 200 float 1;
+#A 0 1.12535e-07 1.54727e-07 2.12059e-07 2.89706e-07 3.94519e-07 5.35535e-07
+7.24633e-07 9.77371e-07 1.31404e-06 1.76105e-06 2.35258e-06 3.13275e-06
+4.15832e-06 5.50199e-06 7.25659e-06 9.54016e-06 1.25023e-05 1.63317e-05
+2.1266e-05 2.76026e-05 3.57128e-05 4.60584e-05 5.92113e-05 7.58768e-05
+9.69224e-05 0.00012341 0.000156634 0.000198167 0.000249912 0.000314163
+0.000393669 0.000491721 0.000612231 0.000759842 0.000940028 0.00115923
+0.00142498 0.00174605 0.00213263 0.00259648 0.00315111 0.00381201 0.00459678
+0.0055254 0.0066204 0.00790705 0.0094136 0.0111714 0.013215 0.0155826
+0.0183156 0.0214592 0.0250621 0.0291763 0.0338573 0.0391639 0.0451575
+0.0519019 0.0594631 0.0679081 0.0773047 0.0877205 0.0992216 0.111872
+0.125732 0.140858 0.1573 0.1751 0.194291 0.214896 0.236928 0.260383
+0.285247 0.311486 0.339053 0.367879 0.397882 0.428956 0.46098 0.493812
+0.527292 0.561244 0.595473 0.62977 0.663916 0.697676 0.730811 0.763074
+0.794216 0.823987 0.852144 0.878447 0.902668 0.924595 0.944027 0.960789
+0.974725 0.985703 0.99362 0.998401 1 0.998401 0.99362 0.985703 0.974725
+0.960789 0.944027 0.924595 0.902668 0.878447 0.852144 0.823987 0.794216
+0.763074 0.730811 0.697676 0.663916 0.62977 0.595473 0.561244 0.527292
+0.493812 0.46098 0.428956 0.397882 0.367879 0.339053 0.311486 0.285247
+0.260383 0.236928 0.214896 0.194291 0.1751 0.1573 0.140858 0.125732
+0.111872 0.0992216 0.0877205 0.0773047 0.0679081 0.0594631 0.0519019
+0.0451575 0.0391639 0.0338573 0.0291763 0.0250621 0.0214592 0.0183156
+0.0155826 0.013215 0.0111714 0.0094136 0.00790705 0.0066204 0.0055254
+0.00459678 0.00381201 0.00315111 0.00259648 0.00213263 0.00174605 0.00142498
+0.00115923 0.000940028 0.000759842 0.000612231 0.000491721 0.000393669
+0.000314163 0.000249912 0.000198167 0.000156634 0.00012341 9.69224e-05
+7.58768e-05 5.92113e-05 4.60584e-05 3.57128e-05 2.76026e-05 2.1266e-05
+1.63317e-05 1.25023e-05 9.54016e-06 7.25659e-06 5.50199e-06 4.15832e-06
+3.13275e-06 2.35258e-06 1.76105e-06 1.31404e-06 9.77371e-07 7.24633e-07
+5.35535e-07 3.94519e-07 2.89706e-07 2.12059e-07 1.54727e-07;
+#X coords 0 1 199 0 200 140 1;
+#X restore 776 417 graph;
+#X obj 364 379 cos~;
+#X obj 364 356 -~ 0.25;
+#X obj 364 425 +~ 100;
+#X obj 364 448 tabread4~ bell-curve;
+#X obj 235 522 *~;
+#X obj 364 330 *~ 0.5;
+#X obj 179 219 f 440;
+#X obj 206 61 r freq;
+#X obj 555 59 r click;
+#X obj 439 333 loadbang;
+#X obj 235 625 *~;
+#X obj 206 136 t f f;
+#X msg 555 559 1 10 \, 0 550 10;
+#X msg 439 356 25;
+#X obj 235 549 lop~ 18000;
+#X text 656 39 Instead of using the two cosines as FM carrier oscillators
+\, we can use them as ring modulators for a natural or synthetic tone.
+Here we use waveshaping - to wit \, a sinusoid looking up a Gaussian
+bell curve. This has the nice properties that the partials are always
+positive cosines in phase \, and the spectrum spreads out smoothly
+as the index changes.;
+#X text 737 19 PAF: TWO-COSINE RING MODULATOR FOR WAVESHAPER;
+#X text 656 271 Then with ~* we do the ring modulation and we're done.
+This is the PAF (phase-aligned formant) synthesis algorithm (patented
+1993 by IRCAM).;
+#X text 656 147 For phase coherency \, the waveshaper and the cosine
+pair are driven from the same phasor~ object. Since the waveshaping
+is done using a symmetric curve \, its output is at double the frequency
+of the input. So for each cycle of the phasor we compute a half-cycle
+of the sine function (by multiplying by 0.5 and subtracting 0.25 before
+the cosine lookup). We center the cosine output for lookup in a 200-point
+table containing a bell curve.;
+#X connect 1 0 31 1;
+#X connect 2 0 27 0;
+#X connect 3 0 4 0;
+#X connect 4 0 2 0;
+#X connect 5 0 11 1;
+#X connect 5 0 13 0;
+#X connect 6 0 10 0;
+#X connect 6 0 5 0;
+#X connect 7 0 11 0;
+#X connect 8 0 9 1;
+#X connect 8 0 12 1;
+#X connect 9 0 6 1;
+#X connect 10 0 7 0;
+#X connect 11 0 12 0;
+#X connect 12 0 13 1;
+#X connect 13 0 25 0;
+#X connect 14 0 9 0;
+#X connect 14 0 8 0;
+#X connect 15 0 17 0;
+#X connect 16 0 14 0;
+#X connect 17 0 16 0;
+#X connect 18 0 14 1;
+#X connect 18 0 10 1;
+#X connect 18 0 6 0;
+#X connect 18 0 26 0;
+#X connect 19 0 23 0;
+#X connect 21 0 19 0;
+#X connect 22 0 21 0;
+#X connect 23 0 24 0;
+#X connect 24 0 25 1;
+#X connect 25 0 35 0;
+#X connect 26 0 22 0;
+#X connect 27 0 18 0;
+#X connect 28 0 32 0;
+#X connect 29 0 33 0;
+#X connect 30 0 34 0;
+#X connect 31 0 0 0;
+#X connect 31 0 0 1;
+#X connect 32 0 27 1;
+#X connect 32 1 15 0;
+#X connect 33 0 1 0;
+#X connect 34 0 19 1;
+#X connect 35 0 31 0;
