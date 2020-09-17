@@ -6,12 +6,12 @@ Minim is a digital synthesizer. It synthesizes all sounds, allows for microtonal
 
 The appstore pics are below, and the appstore video can be found in the media folder.
 
-![](https://github.com/justKD/Minim-DMI/blob/master/Minim/media/screenshot_1.jpg?raw=true)
+![](https://github.com/justKD/Minim-DMI/blob/master/Minim/media/screenshot_1.jpg?raw=true =250x)
 
-![](https://github.com/justKD/Minim-DMI/blob/master/Minim/media/screenshot_2.jpg?raw=true)
+![](https://github.com/justKD/Minim-DMI/blob/master/Minim/media/screenshot_2.jpg?raw=true =250x)
 
-![](https://github.com/justKD/Minim-DMI/blob/master/Minim/media/screenshot_3.jpg?raw=true)
+![](https://github.com/justKD/Minim-DMI/blob/master/Minim/media/screenshot_3.jpg?raw=true =250x)
 
-![](https://github.com/justKD/Minim-DMI/blob/master/Minim/media/screenshot_4.jpg?raw=true)
+![](https://github.com/justKD/Minim-DMI/blob/master/Minim/media/screenshot_4.jpg?raw=true =250x)
 
-![](https://github.com/justKD/Minim-DMI/blob/master/Minim/media/screenshot_5.jpg?raw=true)
+![](https://github.com/justKD/Minim-DMI/blob/master/Minim/media/screenshot_5.jpg?raw=true =250x)
